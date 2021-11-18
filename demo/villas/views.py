@@ -35,7 +35,7 @@ class VillaView(APIView):
                 avg_price+=i.price
            
             avg_price = avg_price/len(villalist)
-            gst = (avg_price) * 0.
+            gst = (avg_price) * 0.18 
             avg_price = avg_price + gst
             response_data = {'Villas_available_and_price':[],
                             'Avg_price':avg_price}
