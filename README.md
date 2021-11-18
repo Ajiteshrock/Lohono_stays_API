@@ -22,21 +22,15 @@
 
 ## Request Format
 
-{
-   "check_in": "2021-03-06 11:52",
-   "check_out": "2021-07-09 12:42",
+##{
+##   "check_in": "2021-03-06 11:52",
+##   "check_out": "2021-07-09 12:42",
    
- }
+## }
  
  # Response Format 
  
- {"Villas_available_and_price": [
-        [
-            "Jennifer Evans villa",
-            33698.0
-        ],
-        "Avg_price": 40741.51219512195
-}
+## { "Villas_available_and_price": [ [ "Jennifer Evans villa",  33698.0 ], "Avg_price": 40741.51219512195   }
 
 
 ### api/villas/?sort="price
