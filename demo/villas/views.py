@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Villa
 from rest_framework import generics
+from django.db.models import Q
 
 class VillaView(APIView):
 
@@ -22,10 +23,11 @@ class VillaView(APIView):
 
         query_param = self.request.query_params.get('sort',None)
 
-        villalist = Villa.objects.all().exclude(
-                    check_in__lte=data['check_out'],
-                    check_out__gte=data['check_in']
-                )
+        # #villalist = Villa.objects.all().exclude(
+        #             check_in__lte=data['check_out'],
+        #             check_out__gte=data['check_in']
+        #         )
+        villalist = Villa.objects.filter(Q(check_in__lte=data['check_out']) & Q(check_out__gte=data['check_in']))
         print(len(villalist))
         if len(villalist)>1:
             avg_price = 0
