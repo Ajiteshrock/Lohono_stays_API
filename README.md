@@ -5,10 +5,10 @@
 
 ### Running Code
 
-pip install requirements.txt
-clone the repo 
-got to >> demo 
-python manage.py runserver
+* pip install requirements.txt
+* clone the repo 
+* got to >> demo 
+* python manage.py runserver
 
 
 ## Endpoints
