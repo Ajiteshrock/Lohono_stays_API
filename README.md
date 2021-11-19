@@ -35,3 +35,18 @@
 
 ### api/villas/?sort="price
 ## the list which we will be sorted on the bases of Price
+
+### api/villa_rate
+## Request 
+
+## {
+##   "check_in": "2021-03-06 11:52",
+##   "check_out": "2021-07-09 12:42",
+   
+## }
+
+## Response
+
+### {
+   ### "message": "Villas Are Not Available"
+### }
