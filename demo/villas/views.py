@@ -7,7 +7,9 @@ from rest_framework import status
 from .models import Villa
 from rest_framework import generics
 from django.db.models import Q
-
+import datetime
+import pytz
+utc = pytz.UTC
 class VillaView(APIView):
 
     def get(self,request):
@@ -23,12 +25,12 @@ class VillaView(APIView):
 
         query_param = self.request.query_params.get('sort',None)
 
-        # #villalist = Villa.objects.all().exclude(
-        #             check_in__lte=data['check_out'],
-        #             check_out__gte=data['check_in']
-        #         )
+        villalist = Villa.objects.all().exclude(
+                    check_in__lte=data['check_out'],
+                    check_out__gte=data['check_in']
+                )
         villalist = Villa.objects.filter(Q(check_in__lte=data['check_out']) & Q(check_out__gte=data['check_in']))
-        print(len(villalist))
+        
         if len(villalist)>1:
             avg_price = 0
             for i in villalist:
@@ -63,6 +65,38 @@ class VillaView(APIView):
             return Response(response_data,status=status.HTTP_202_ACCEPTED)
             
                
+class Villa_Rate(APIView):
+
+    def post(self,request):
+        data = request.data
+        check_in = datetime.datetime.strptime(data['check_in'],"%Y-%m-%d %H:%M")
+        check_out = datetime.datetime.strptime(data['check_out'],"%Y-%m-%d %H:%M")
+        
+        stay_days = (check_out-check_in)
+        def is_available(check_in,check_out):
+            villa_object = Villa.objects.all()
+            villas_list = []
+            price = []
+            for i in villa_object:
+                check_in  = check_in.replace(tzinfo=utc)
+                check_out = check_out.replace(tzinfo=utc)
+                if i.check_in.date() > check_out.date() and i.check_out.date()<=i.check_in.date():
+                    villas_list.append(True)
+                    price.append(int(i.price))  
+                else:
+                    villas_list.append(False)
+            return (all(villas_list),(sum(price)/len(villas_list)))
+            
+            
+        if is_available(check_in, check_out)[0]:
+            rate = is_available(check_in, check_out)[1]
+            rate = rate + (rate*0.18)
+            return Response({"Availability":"Villas Are Available",
+                             "Total Price":rate},status=status.HTTP_202_ACCEPTED)
+   
+        return Response({'message':"Villas Are Not Available"})
+   
+   
 
 
 

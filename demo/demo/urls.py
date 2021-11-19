@@ -19,4 +19,5 @@ from villas import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/villas/',views.VillaView().as_view(),name='Villa view'),
+    path('api/villas_rate/',views.Villa_Rate().as_view()),
 ]
