@@ -5,22 +5,22 @@
 
 ### Running Code
 
-# pip install requirements.txt
-# clone the repo 
-# got to >> demo 
-# python manage.py runserver
+### pip install requirements.txt
+### clone the repo 
+### got to >> demo 
+### python manage.py runserver
 
 
-# Endpoints
+## Endpoints
 
 ### api/villas/  (GET)
-# This will give the all villas list their price and their booked check_in and check_out 
+### This will give the all villas list their price and their booked check_in and check_out 
 
 ### api/villas/ (POST)
-# This will give all available villas and their prices 
-# Also the average price including 18% GST
+## This will give all available villas and their prices 
+## Also the average price including 18% GST
 
-## Request Format
+### Request Format
 
 ## {
 ##   "check_in": "2021-03-06 11:52",
@@ -28,7 +28,7 @@
    
 ## }
  
- # Response Format 
+ ### Response Format 
  
 ## { "Villas_available_and_price": [ [ "Jennifer Evans villa",  33698.0 ], "Avg_price": 40741.51219512195   }
 
@@ -37,7 +37,7 @@
 ## the list which we will be sorted on the bases of Price
 
 ### api/villa_rate
-## Request 
+### Request 
 
 ## {
 ##   "check_in": "2021-03-06 11:52",
@@ -45,7 +45,7 @@
    
 ## }
 
-## Response
+### Response
 
 ### {
    ### "message": "Villas Are Not Available"
