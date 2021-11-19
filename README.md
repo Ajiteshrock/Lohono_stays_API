@@ -5,10 +5,10 @@
 
 ### Running Code
 
-#### pip install requirements.txt
-#### clone the repo 
-#### got to >> demo 
-#### python manage.py runserver
+pip install requirements.txt
+clone the repo 
+got to >> demo 
+python manage.py runserver
 
 
 ## Endpoints
@@ -24,7 +24,7 @@
 
 ### {
 ###   "check_in": "2021-03-06 11:52",
-## #  "check_out": "2021-07-09 12:42",
+###  "check_out": "2021-07-09 12:42",
    
 ### }
  
