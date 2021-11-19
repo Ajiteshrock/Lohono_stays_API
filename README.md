@@ -1,6 +1,4 @@
-# Lohono_stays_API
-
-# This is demo API of the assignment given 
+## Lohono_stays_API
 
 
 ### Running Code
